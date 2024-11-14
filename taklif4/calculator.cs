@@ -131,6 +131,32 @@ namespace taklif4
     }
     public class Palindrome2 : Calculator
     {
+        public override bool IsTrue(long numberin)
+        {
+            bool IsMirror = false;
+            long result = 0, n = 0, wres = numberin;
+
+            while (wres != 0)
+            {
+                n++;
+                wres /= 10;
+
+            }
+            long x = n / 2;
+
+            while (numberin / Math.Pow(10, x) > 0)
+            {
+                long digit = numberin % 10;
+                result = result * 10 + digit;
+                numberin /= 10;
+                //Console.WriteLine(numberin);
+                //Console.WriteLine(result);
+                if (result == numberin)
+                    return IsMirror = true;
+            }
+            return IsMirror;
+
+        }
     }
 }
 

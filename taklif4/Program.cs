@@ -1,24 +1,80 @@
-﻿using taklif4;
+﻿using System.Security.Cryptography;
+using taklif4;
+Keyboard start =new Keyboard();
+bool lenght=false;
 
-while(true)
+char gethomekey = char.MinValue;
+while (gethomekey != 27) 
 {
-    Console.WriteLine("Hello, World!");
-    //this is a main file of homework
-    Calculator palindrome1 = new Palindrome1();
-    Console.WriteLine(palindrome1.IsTrue(123456654321));
-    PPrime palindrome2 = new PPrime();
-    Console.WriteLine(palindrome2.IsTrue(65198613298328956));
-    //Console.WriteLine(palindrome2.getprime());
-    //foreach ( int p in palindrome2.getprime())
-    //{
-    //    Console.WriteLine(p);
-    //}
-    Keyboard x = new Keyboard();
+    Calculator calculator;
+    bool continu = true;
+    Console.WriteLine("************\t HELLO \t************");
+    Console.ForegroundColor = ConsoleColor.Blue;
+    gethomekey = start.GetHomekey(); // get home key always  is upper case letter
 
-    Console.WriteLine(x.GetHomekey());
+    Console.ForegroundColor = ConsoleColor.White;
 
+    switch (gethomekey)
+    {
+        case 'A':
+            {
+               
+                while(continu)
+                { Console.Clear();
+                    long number =start.GetNumber(  lenght: out  lenght,pagename:"**\t**\tPRIME NUMBER\t**\t**");
+                    if(lenght==false)            
+                          calculator = new SPrime();
+                    else
+                          calculator = new PPrime();
+                    Console.WriteLine($"\n\rthe number :{number}       is prime :{calculator.IsTrue(number)} \n");
+                    continu = start.GetYorN();
+                    
+                }
+
+                Console.WriteLine("\r\ryou gonao goto the home page\r\r");
+                Console.Clear();
+                break;
+            }
+        case 'B':
+            {
+
+
+                
+                while (continu)
+                {
+                    
+
+                    long number = start.GetNumber(lenght:out lenght, pagename :"**\t**\tMIRRORE NUMBER\t**\t**"  );
+                    if (lenght == false)
+                        calculator = new Palindrome1();
+                    else
+                        calculator = new Palindrome2();
+                   
+                    Console.WriteLine($"\nthe number :{number}       is palindrome :     {calculator.IsTrue(number)} \n");
+                    continu = start.GetYorN();
+                    Console.Clear();
+                }
+                Console.Clear();
+                Console.WriteLine("\r\ryou gonao goto the home page\r\r");
+                
+
+                break ;
+
+
+            }
+        
+             
+         
+           
+
+
+
+            
+       
+    }
+    
 }
-
+Console.WriteLine("Bye Bye");
 
 
 
