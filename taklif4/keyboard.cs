@@ -85,13 +85,13 @@ namespace taklif4
            
                 int n = 0;
                 if(n== 0)   
-                    Console.WriteLine("*************************\rplease enter\r*********************************\n\n\r***\tyou are in the Hmepage\t***\n\rA : for check the prime number\n\rB : for checke the palindome number\n\n \n\n for escape : press esc");
+                    Console.WriteLine("*************************\rplease enter\r*********************************\n\n\r***\tyou are in the Hmepage\t***\n\rA : for check the prime number\n\rB : for checke the palindome number\n\rC : for check the fibonachi number\n\n \n\n for escape : press esc");
                 char input = char.MinValue;
                
             while (true)
             {
                 input = char.ToUpper(Console.ReadKey(true).KeyChar);
-                if (input == 'H' || input == 'A' || input == 'B'||input==27 )
+                if (input == 'H' || input == 'A' || input == 'B'||input==27 || input == 'C' || input == 'c')
                 {   
                     
                     return input;

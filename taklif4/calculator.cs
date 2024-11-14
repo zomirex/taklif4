@@ -16,6 +16,7 @@ namespace taklif4
         {
             return false;
         }
+       
 
 
 
@@ -23,6 +24,8 @@ namespace taklif4
     public class SPrime : Calculator
     {
         public override bool IsTrue(long number)
+        {return false; }    
+        public  bool IsTrue(int number)
         {
             bool IsprimeNumber = true;
             long value = Convert.ToInt32(Math.Sqrt(number));
@@ -133,6 +136,11 @@ namespace taklif4
     {
         public override bool IsTrue(long numberin)
         {
+            Console.WriteLine("in this method you cant use long ");
+            return false;
+        }
+        public  bool IsTrue(int numberin)
+        {
             bool IsMirror = false;
             long result = 0, n = 0, wres = numberin;
 
@@ -155,8 +163,56 @@ namespace taklif4
                     return IsMirror = true;
             }
             return IsMirror;
-
         }
+        }
+    public class Fibonachi : Calculator
+    {
+        public override bool IsTrue(long number)
+        {
+            bool istrue = false;
+            long a1 = 0, a2 = 1, l = 0;
+            l = a1 + a2;
+            while (l <= number)
+            {
+                if (l == number)
+                {
+
+                    istrue = true;
+                    break;
+                }
+                a1 = l;
+                l = l + a2;
+                a2 = a1;
+
+            }
+
+            return istrue;
+            
+        }
+        public bool IsTrue (int number)
+        {
+            bool istrue = false;
+            int a1 = 0, a2 = 1, l = 0;
+                    l = a1 + a2;
+             while (l <= number)
+             {
+                if (l == number)
+                {
+                
+                 istrue = true;
+                 break;
+                }
+                a1 = l;
+                l = l+a2;
+                a2 = a1;
+
+             }
+                      
+            return istrue;
+        }
+        
+
+
     }
 }
 
