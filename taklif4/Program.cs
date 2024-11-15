@@ -11,7 +11,7 @@ while (gethomekey != 27)
     bool continu = true;
     Console.WriteLine("************\t HELLO \t************");
     Console.ForegroundColor = ConsoleColor.Blue;
-    gethomekey = start.GetHomekey(); // get home key always  is upper case letter
+    gethomekey = Keyboard.GetHomekey(); // get home key always  is upper case letter
 
     Console.ForegroundColor = ConsoleColor.White;
 
@@ -22,7 +22,7 @@ while (gethomekey != 27)
                
                 while(continu)
                 { Console.Clear();
-                    long number2 =start.GetNumber(  lenght: out  lenght,pagename:"**\t**\tPRIME NUMBER\t**\t**");
+                    long number2 =Keyboard.GetNumber(  lenght: out  lenght,pagename:"**\t**\tPRIME NUMBER\t**\t**");
                     
                     if(lenght==false)
                     { calculator = new SPrime();
@@ -37,8 +37,8 @@ while (gethomekey != 27)
 
                     }
 
-                          
-                    continu = start.GetYorN();
+                    Console.WriteLine("if you wana continue ");
+                    continu = Keyboard.GetYorN();
                     
                 }
 
@@ -53,24 +53,24 @@ while (gethomekey != 27)
                 
                 while (continu)
                 {
-                    
 
-                    long number1 = start.GetNumber(lenght:out lenght, pagename :"**\t**\tMIRRORE NUMBER\t**\t**"  );
+                    Console.Clear();
+                    long number1 = Keyboard.GetNumber(lenght:out lenght, pagename :"**\t**\tMIRRORE NUMBER\t**\t**"  );
                     int number2= Convert.ToInt32(number1);
-                    if (lenght == false)
-                    {calculator = new Palindrome1();
-                     Console.WriteLine($"\nthe number :{number1}       is palindrome :     {calculator.IsTrue(number1)} \n");
-                    }
-
-                    else
-                    { 
-                        calculator = new Palindrome2();
-                        Console.WriteLine($"\nthe number :{number2}       is palindrome :     {calculator.IsTrue(number2)} \n");
-                    }
-                       
                    
-                    
-                    continu = start.GetYorN();
+                    calculator = new Palindrome1();
+                     Console.WriteLine($"\nthe number :{number1}       is palindrome :     {calculator.IsTrue(number1)} \n");
+
+
+                    //else
+                    //{ 
+                    //    calculator = new Palindrome2();
+                    //    Console.WriteLine($"\nthe number :{number2}       is palindrome :     {calculator.IsTrue(number2)} \n");
+                    //}
+
+
+                    Console.WriteLine("if you wana continue ");
+                    continu = Keyboard.GetYorN();
                     Console.Clear();
                 }
                 Console.Clear();
@@ -83,19 +83,20 @@ while (gethomekey != 27)
             }
         case 'C':
             {
+                Console.Clear();
                 while (continu)
                 {
                     Console.Clear();
-                    long number2 = start.GetNumber(lenght: out lenght, pagename: "**\t**\tfibonachi NUMBER\t**\t**");
+                    long number2 = Keyboard.GetNumber(lenght: out lenght, pagename: "**\t**\tfibonachi NUMBER\t**\t**");
                     calculator = new Fibonachi();    
                     int number1 = Convert.ToInt32(number2);
                     Console.WriteLine($"\n\rthe number :{number1}       is in fibonachi :{calculator.IsTrue(number1)} \n");
-                    
-
-                    
 
 
-                    continu = start.GetYorN();
+
+
+                    Console.WriteLine("if you wana continue ");
+                    continu = Keyboard.GetYorN();
 
                 }
 
@@ -104,14 +105,33 @@ while (gethomekey != 27)
 
                 break ;
             }
-             
-         
-           
+        case 'D':
+            {
+                Console.Clear();
+                Console.WriteLine("please choose number beetwin 0 to 100");
+               
+                calculator = new DecisionTree();
+                while (continu)
+                {
+                    Console.Clear();
+                    //Console.WriteLine($"is your number beet win {0} to {50}");
+                    calculator.IsTrue();
+                    Console.WriteLine("\vif you wana continue ");
+                    continu  = Keyboard.GetYorN();
+                }
+                
+                Console.WriteLine("\r\ryou gonao goto the home page\r\r");
+                Console.Clear();
+
+                break;
+            }
 
 
 
-            
-       
+
+
+
+
     }
     
 }

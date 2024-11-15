@@ -11,7 +11,7 @@ namespace taklif4
 {
     public class Keyboard   // this have 4 methode to get specific value frome user
     {
-        public long GetNumber(string pagename,out bool lenght)
+        public static long GetNumber(string pagename,out bool lenght)
         {
             lenght = false;
             Console.WriteLine($" {pagename}");
@@ -58,11 +58,11 @@ namespace taklif4
             Console.WriteLine($"********\ryou are quit the code\r*******\n\r\ryour number is :  {r} and it is bigger than 1000 :{ lenght} ");
             return r;
         }
-        public bool GetYorN()
+        public static bool GetYorN()
         {
             while (true)
             {
-                Console.WriteLine("if you wana continue ");
+                
                 Console.WriteLine("**********\tplease press Y :for yes\tor\tpress  N : for no\t************");
                 char input = char.MinValue;
                 input = char.ToUpper(Console.ReadKey(true).KeyChar);
@@ -80,18 +80,18 @@ namespace taklif4
 
             }
         }
-        public char GetHomekey ()
+        public static char GetHomekey ()
         {
            
                 int n = 0;
                 if(n== 0)   
-                    Console.WriteLine("*************************\rplease enter\r*********************************\n\n\r***\tyou are in the Hmepage\t***\n\rA : for check the prime number\n\rB : for checke the palindome number\n\rC : for check the fibonachi number\n\n \n\n for escape : press esc");
+                    Console.WriteLine("*************************\rplease enter\r*********************************\n\n\r***\tyou are in the Hmepage\t***\n\rA : for check the prime number\n\rB : for checke the palindome number\n\rC : for check the fibonachi number\n\rD : for decision tree\n\r\n\n \n\n for escape : press esc");
                 char input = char.MinValue;
                
             while (true)
             {
                 input = char.ToUpper(Console.ReadKey(true).KeyChar);
-                if (input == 'H' || input == 'A' || input == 'B'||input==27 || input == 'C' || input == 'c')
+                if (input == 'H' || input == 'A' || input == 'B'||input==27 || input == 'C' || input == 'c' || input == 'D' || input == 'd')
                 {   
                     
                     return input;

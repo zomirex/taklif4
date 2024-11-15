@@ -16,16 +16,20 @@ namespace taklif4
         {
             return false;
         }
-       
+        public virtual bool IsTrue (  )
+        {
+            
+            return false;
+        }
+
 
 
 
     }
     public class SPrime : Calculator
     {
+       
         public override bool IsTrue(long number)
-        {return false; }    
-        public  bool IsTrue(int number)
         {
             bool IsprimeNumber = true;
             long value = Convert.ToInt32(Math.Sqrt(number));
@@ -123,48 +127,46 @@ namespace taklif4
                 long digit = numberin % 10;
                 result = result * 10 + digit;
                 numberin /= 10;
-                //Console.WriteLine(numberin);
+                //Console.WriteLine(numberin/10);
                 //Console.WriteLine(result);
                 if (result==numberin) 
                     return IsMirror=true;
+                if (result == numberin / 10)
+                    return true;
             }
             return IsMirror;    
             
         }
     }
-    public class Palindrome2 : Calculator
-    {
-        public override bool IsTrue(long numberin)
-        {
-            Console.WriteLine("in this method you cant use long ");
-            return false;
-        }
-        public  bool IsTrue(int numberin)
-        {
-            bool IsMirror = false;
-            long result = 0, n = 0, wres = numberin;
+    //public class Palindrome2 : Calculator
+    //{
+       
+    //    public override bool IsTrue(long numberin)
+    //    {
+    //        bool IsMirror = false;
+    //        long result = 0, n = 0, wres = numberin;
 
-            while (wres != 0)
-            {
-                n++;
-                wres /= 10;
+    //        while (wres != 0)
+    //        {
+    //            n++;
+    //            wres /= 10;
 
-            }
-            long x = n / 2;
+    //        }
+    //        long x = n / 2;
 
-            while (numberin / Math.Pow(10, x) > 0)
-            {
-                long digit = numberin % 10;
-                result = result * 10 + digit;
-                numberin /= 10;
-                //Console.WriteLine(numberin);
-                //Console.WriteLine(result);
-                if (result == numberin)
-                    return IsMirror = true;
-            }
-            return IsMirror;
-        }
-        }
+    //        while (numberin / Math.Pow(10, x) > 0)
+    //        {
+    //            long digit = numberin % 10;
+    //            result = result * 10 + digit;
+    //            numberin /= 10;
+    //            //Console.WriteLine(numberin);
+    //            //Console.WriteLine(result);
+    //            if (result == numberin)
+    //                return IsMirror = true;
+    //        }
+    //        return IsMirror;
+    //    }
+    //    }
     public class Fibonachi : Calculator
     {
         public override bool IsTrue(long number)
@@ -189,30 +191,92 @@ namespace taklif4
             return istrue;
             
         }
-        public bool IsTrue (int number)
-        {
-            bool istrue = false;
-            int a1 = 0, a2 = 1, l = 0;
-                    l = a1 + a2;
-             while (l <= number)
-             {
-                if (l == number)
-                {
-                
-                 istrue = true;
-                 break;
-                }
-                a1 = l;
-                l = l+a2;
-                a2 = a1;
-
-             }
-                      
-            return istrue;
-        }
+       
         
 
 
+    }
+    public class DecisionTree : Calculator
+    {
+        public override bool IsTrue()
+        {
+            bool x = false,final=false;
+            int s=0,e=0;
+            int midnumber = (0 +100)/2;
+            s = midnumber;
+            e= 100;
+            while(true)
+            {
+                
+                
+                //while(midnumber ==1)
+                //{
+                //    Console.WriteLine($"is your number {s}");
+                //    if (Keyboard.GetYorN())
+                //    {
+                //        Console.WriteLine($" your number is:\t{s}");
+                //        final = true;
+                //        break;
+                //    }
+                //    else
+                //        s++;
+                        
+                //}
+                if (final==true) 
+                    break;
+                Console.WriteLine($"is your number beet win {s} to {e}");
+                x = Keyboard.GetYorN();
+                if ( x == true )
+                {
+                    midnumber /= 2;
+                    s += midnumber;
+                    while (midnumber == 1)
+                    {
+                        Console.WriteLine($"is your number {s}");
+                        if (Keyboard.GetYorN())
+                        {
+                            Console.WriteLine($" your number is:\t{s}");
+                            final = true;
+                            break;
+                        }
+                        else
+                            s++;
+
+                    }
+                }//37 50//43 50 
+                
+                else
+                {
+                    e = s;
+                    s-= midnumber*2;
+                    //midnumber/=2;
+                    s += midnumber;
+                    midnumber/=2;
+                    while (midnumber == 1)
+                    {
+                        Console.WriteLine($"is your number {s}");
+                        if (Keyboard.GetYorN())
+                        {
+                            Console.WriteLine($" your number is:\t{s}");
+                            final = true;
+                            break;
+                        }
+                        else
+                            s++;
+
+                    }
+                }//25 50 //40 43
+
+
+
+
+            }
+            return true; 
+        }
+
+
+
+      
     }
 }
 
