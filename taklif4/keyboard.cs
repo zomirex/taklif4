@@ -80,30 +80,60 @@ namespace taklif4
 
             }
         }
-        public static char GetHomekey ()
+        public static char GetHomekey (out string pagename)
         {
-           
+            pagename = "f";
                 int n = 0;
                 if(n== 0)   
                     Console.WriteLine("*************************\rplease enter\r*********************************\n\n\r***\tyou are in the Hmepage\t***\n\rA : for check the prime number\n\rB : for checke the palindome number\n\rC : for check the fibonachi number\n\rD : for decision tree\n\r\n\n \n\n for escape : press esc");
                 char input = char.MinValue;
-               
-            while (true)
+            char result;
+            bool contin = false;
+            do
             {
-                input = char.ToUpper(Console.ReadKey(true).KeyChar);
-                if (input == 'H' || input == 'A' || input == 'B'||input==27 || input == 'C' || input == 'c' || input == 'D' || input == 'd')
-                {   
-                    
-                    return input;
-                    
-                }
-                  
-                else
+               
+                switch(input = char.ToUpper(Console.ReadKey(true).KeyChar))
                 {
-                    Console.WriteLine("please enter right format");
-                    n++;
-                }
-            }
+                    case 'A':
+                        {
+                            pagename = "simple/pro prime";
+                            result = 'A';
+                            contin = false;
+                            break;
+                        }
+                    case 'B':
+                        {
+                            pagename = "palindrom";
+                            result = 'B';
+                            contin = false;
+                            break;
+                        }
+                    case 'C':
+                        {
+                            pagename = "fibunachi";
+                            result = 'C';
+                            contin = false;
+                            break;
+                        }
+                    case 'D':
+                        {
+                            pagename = "decision tree";
+                            result = 'D';
+                            contin = false;
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("please enter right format");
+                            n++;
+                            result =char.MinValue;
+                            contin = true;
+                            break;
+                        }
+                       
+                }                            
+            }while (contin);
+            return result;
         }
     }
     

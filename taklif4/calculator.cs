@@ -5,26 +5,15 @@ using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using taklif4;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace taklif4
 {
 
-    public class Calculator   //this have one virtual methode
+    public abstract class Calculator   //this have one virtual methode
     {
-        public virtual bool IsTrue(long n)
-        {
-            return false;
-        }
-        public virtual bool IsTrue (  )
-        {
-            
-            return false;
-        }
-
-
-
-
+        public abstract bool IsTrue(long n);
     }
     public class SPrime : Calculator
     {
@@ -198,7 +187,7 @@ namespace taklif4
     }
     public class DecisionTree : Calculator
     {
-        public override bool IsTrue()
+        public override bool IsTrue(long n = 0 )
         {
             bool x = false,final=false;
             int s=0,e=0;
@@ -271,6 +260,8 @@ namespace taklif4
 
 
             }
+            
+
             return true; 
         }
 
@@ -279,4 +270,31 @@ namespace taklif4
       
     }
 }
+public static class CalculatorFactory
+{
+    public static Calculator calfactory (char gethomekey ,bool lenght)
+    {
+        switch (gethomekey)
+        {
+            case 'A':
+                {
+                    if(!lenght)
+                        return new SPrime();
+                    else
+                        return new PPrime();
 
+                }
+                
+            case 'B':
+                return new Palindrome1();
+            case 'C':
+                return new Fibonachi();
+            case 'D':
+                return new DecisionTree();
+            default:
+                throw new NotImplementedException("you sed a wrong number");
+        }
+    }
+    
+
+}
